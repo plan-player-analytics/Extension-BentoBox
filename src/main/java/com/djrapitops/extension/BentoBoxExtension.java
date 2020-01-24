@@ -22,8 +22,12 @@
 */
 package com.djrapitops.extension;
 
+import com.djrapitops.plan.extension.CallEvents;
 import com.djrapitops.plan.extension.DataExtension;
+import com.djrapitops.plan.extension.ElementOrder;
 import com.djrapitops.plan.extension.annotation.PluginInfo;
+import com.djrapitops.plan.extension.annotation.TabInfo;
+import com.djrapitops.plan.extension.annotation.TabOrder;
 import com.djrapitops.plan.extension.icon.Color;
 import com.djrapitops.plan.extension.icon.Family;
 
@@ -32,11 +36,30 @@ import com.djrapitops.plan.extension.icon.Family;
  *
  * @author Rsl1122
  */
-@PluginInfo(name = "", iconName = "", iconFamily = Family.SOLID, color = Color.NONE)
-public class NewExtension implements DataExtension {
+@PluginInfo(name = "BentoBox", iconName = "street-view", iconFamily = Family.SOLID, color = Color.GREEN)
+@TabInfo(
+        tab = "Islands",
+        iconName = "street-view",
+        elementOrder = {ElementOrder.VALUES}
+)
+@TabInfo(
+        tab = "Challenges",
+        iconName = "bookmark",
+        elementOrder = {ElementOrder.VALUES}
+)
+@TabOrder({"Islands", "Challenges"})
+public class BentoBoxExtension implements DataExtension {
 
-    public NewExtension() {
-        // TODO Add required API classes
+    public BentoBoxExtension() {
+    }
+
+    @Override
+    public CallEvents[] callExtensionMethodsOn() {
+        return new CallEvents[]{
+                CallEvents.PLAYER_JOIN,
+                CallEvents.PLAYER_LEAVE,
+                CallEvents.SERVER_PERIODICAL
+        };
     }
 
     // TODO Add Provider methods
