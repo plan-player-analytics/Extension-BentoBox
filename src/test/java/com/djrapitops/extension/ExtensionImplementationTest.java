@@ -28,6 +28,9 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
+import java.util.HashMap;
+import java.util.Map;
+
 /**
  * Test for the implementation of the new extension
  *
@@ -35,18 +38,36 @@ import org.junit.jupiter.api.Test;
  */
 class ExtensionImplementationTest {
 
-    private ExtensionExtractor extractor;
+    private static final Map<Class<? extends DataExtension>, ExtensionExtractor> EXTRACTORS = new HashMap<>();
 
     @BeforeEach
     void prepareExtractor() {
-        DataExtension extension = new BentoBoxExtension();
-        extractor = new ExtensionExtractor(extension);
+        put(new AcidIslandExtension(true));
+        put(new BSkyBlockExtension(true));
+        put(new CaveBlockExtension(true));
+        put(new SkyGridExtension(true));
+    }
+
+    private void put(DataExtension extension) {
+        EXTRACTORS.put(extension.getClass(), new ExtensionExtractor(extension));
     }
 
     @Test
     @DisplayName("API is implemented correctly")
     void noImplementationErrors() {
-        extractor.validateAnnotations();
+        IllegalArgumentException caught = null;
+        for (Map.Entry<Class<? extends DataExtension>, ExtensionExtractor> entry : EXTRACTORS.entrySet()) {
+            try {
+                entry.getValue().validateAnnotations();
+            } catch (IllegalArgumentException e) {
+                if (caught == null) {
+                    caught = e;
+                } else {
+                    caught.addSuppressed(e);
+                }
+            }
+        }
+        if (caught != null) throw caught;
     }
 
 }
