@@ -23,8 +23,11 @@
 package com.djrapitops.extension;
 
 import com.djrapitops.plan.extension.DataExtension;
+import com.djrapitops.plan.extension.NotReadyException;
 
-import java.util.Optional;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.function.Supplier;
 
 /**
  * Factory for DataExtension.
@@ -35,17 +38,27 @@ public class BentoBoxExtensionFactory {
 
     private boolean isAvailable() {
         try {
-            Class.forName("");
+            Class.forName("world.bentobox.bentobox.BentoBox");
             return true;
         } catch (ClassNotFoundException e) {
             return false;
         }
     }
 
-    public Optional<DataExtension> createExtension() {
-        if (isAvailable()) {
-            return Optional.of(new BentoBoxExtension());
+    public List<DataExtension> createExtensions() {
+        List<DataExtension> extensions = new ArrayList<>();
+        tryToAdd(extensions, AcidIslandExtension::new);
+        tryToAdd(extensions, BSkyBlockExtension::new);
+        tryToAdd(extensions, CaveBlockExtension::new);
+        tryToAdd(extensions, SkyGridExtension::new);
+        return extensions;
+    }
+
+    private void tryToAdd(List<DataExtension> extensions, Supplier<DataExtension> extensionConstructor) {
+        try {
+            extensions.add(extensionConstructor.get());
+        } catch (NotReadyException e) {
+            // The add-on is unavailable.
         }
-        return Optional.empty();
     }
 }
