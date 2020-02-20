@@ -6,7 +6,7 @@
 
     <groupId>com.djrapitops</groupId>
     <artifactId>Extension-BentoBox</artifactId>
-    <version>1.10.0-R0.1</version>
+    <version>1.10.0-R0.2</version>
     <build>
         <plugins>
             <plugin>

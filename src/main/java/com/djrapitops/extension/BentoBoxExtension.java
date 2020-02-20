@@ -142,6 +142,7 @@ public abstract class BentoBoxExtension implements DataExtension {
         World world = getWorld();
         Object level = new AddonRequestBuilder()
                 .addon("Levels")
+                .label("island-level")
                 .addMetaData("world-name", world.getName())
                 .addMetaData("player", playerUUID)
                 .request();
