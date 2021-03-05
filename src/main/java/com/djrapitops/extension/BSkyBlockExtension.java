@@ -7,7 +7,7 @@ import com.djrapitops.plan.extension.icon.Family;
 /**
  * DataExtension for BSkyBlock.
  *
- * @author Rsl1122
+ * @author AuroraLS3
  */
 @PluginInfo(name = "BSkyBlock", iconName = "street-view", iconFamily = Family.SOLID, color = Color.GREEN)
 public class BSkyBlockExtension extends BentoBoxExtension {

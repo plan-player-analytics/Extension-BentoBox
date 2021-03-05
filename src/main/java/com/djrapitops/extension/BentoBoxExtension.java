@@ -1,5 +1,5 @@
 /*
-    Copyright(c) 2019 Risto Lahtela (Rsl1122)
+    Copyright(c) 2019 Risto Lahtela (AuroraLS3)
 
     The MIT License(MIT)
 
@@ -43,7 +43,7 @@ import static org.bukkit.plugin.java.JavaPlugin.getPlugin;
 /**
  * Abstract Extension for BentoBox game modes.
  *
- * @author Rsl1122
+ * @author AuroraLS3
  */
 @TabInfo(
         tab = "Islands",

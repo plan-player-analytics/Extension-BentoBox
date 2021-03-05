@@ -1,5 +1,5 @@
 /*
-    Copyright(c) 2019 Risto Lahtela (Rsl1122)
+    Copyright(c) 2019 Risto Lahtela (AuroraLS3)
 
     The MIT License(MIT)
 
@@ -32,7 +32,7 @@ import java.util.function.Supplier;
 /**
  * Factory for DataExtension.
  *
- * @author Rsl1122
+ * @author AuroraLS3
  */
 public class BentoBoxExtensionFactory {
 
@@ -48,6 +48,7 @@ public class BentoBoxExtensionFactory {
     public List<DataExtension> createExtensions() {
         List<DataExtension> extensions = new ArrayList<>();
         tryToAdd(extensions, AcidIslandExtension::new);
+        tryToAdd(extensions, AOneBlockExtension::new);
         tryToAdd(extensions, BSkyBlockExtension::new);
         tryToAdd(extensions, CaveBlockExtension::new);
         tryToAdd(extensions, SkyGridExtension::new);

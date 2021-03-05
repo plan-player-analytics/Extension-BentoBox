@@ -7,7 +7,7 @@ import com.djrapitops.plan.extension.icon.Family;
 /**
  * DataExtension for CaveBlock.
  *
- * @author Rsl1122
+ * @author AuroraLS3
  */
 @PluginInfo(name = "CaveBlock", iconName = "ghost", iconFamily = Family.SOLID, color = Color.GREEN)
 public class CaveBlockExtension extends BentoBoxExtension {

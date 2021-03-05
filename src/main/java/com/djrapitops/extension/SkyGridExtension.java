@@ -7,7 +7,7 @@ import com.djrapitops.plan.extension.icon.Family;
 /**
  * DataExtension for SkyGrid.
  *
- * @author Rsl1122
+ * @author AuroraLS3
  */
 @PluginInfo(name = "SkyGrid", iconName = "cube", iconFamily = Family.SOLID, color = Color.GREEN)
 public class SkyGridExtension extends BentoBoxExtension {
