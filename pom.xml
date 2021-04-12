@@ -6,7 +6,7 @@
 
     <groupId>com.djrapitops</groupId>
     <artifactId>Extension-BentoBox</artifactId>
-    <version>1.15.5-R0.1</version>
+    <version>1.15.5-R1.0</version>
     <build>
         <plugins>
             <plugin>
@@ -59,7 +59,7 @@
         <dependency> <!-- Plan API -->
             <groupId>com.djrapitops</groupId>
             <artifactId>plan-api</artifactId>
-            <version>5.2-R0.1</version>
+            <version>5.2-R0.5</version>
             <scope>provided</scope>
         </dependency>
         <dependency>

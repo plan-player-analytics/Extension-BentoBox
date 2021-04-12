@@ -26,6 +26,8 @@ import com.djrapitops.plan.extension.*;
 import com.djrapitops.plan.extension.annotation.*;
 import com.djrapitops.plan.extension.icon.Color;
 import com.djrapitops.plan.extension.icon.Family;
+import com.djrapitops.plan.extension.icon.Icon;
+import com.djrapitops.plan.extension.table.Table;
 import org.bukkit.Bukkit;
 import org.bukkit.World;
 import world.bentobox.bentobox.BentoBox;
@@ -36,6 +38,7 @@ import world.bentobox.bentobox.managers.AddonsManager;
 import world.bentobox.bentobox.managers.IslandsManager;
 import world.bentobox.bentobox.managers.PlayersManager;
 
+import java.util.List;
 import java.util.UUID;
 
 import static org.bukkit.plugin.java.JavaPlugin.getPlugin;
@@ -147,6 +150,29 @@ public abstract class BentoBoxExtension implements DataExtension {
                 .addMetaData("player", playerUUID)
                 .request();
         if (level instanceof Long) return (Long) level;
+        throw new NotReadyException();
+    }
+
+    @Conditional("hasIsland")
+    @TableProvider
+    @Tab("Islands")
+    public Table generatorNames(UUID playerUUID) {
+        Object activeGeneratorNames = new AddonRequestBuilder()
+                .addon("MagicCobblestoneGenerator")
+                .label("active-generator-names")
+                .addMetaData("world-name", getWorld().getName())
+                .addMetaData("player", playerUUID)
+                .request();
+
+        if (activeGeneratorNames instanceof List) {
+            List<?> asList = (List<?>) activeGeneratorNames;
+            Table.Factory table = Table.builder()
+                    .columnOne("Active Magic Cobblestone Generator", Icon.called("cube").build());
+            for (Object generatorName : asList) {
+                table.addRow(generatorName);
+            }
+            return table.build();
+        }
         throw new NotReadyException();
     }
 
