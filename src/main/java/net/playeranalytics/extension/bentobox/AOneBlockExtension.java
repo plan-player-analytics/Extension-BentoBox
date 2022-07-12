@@ -1,4 +1,4 @@
-package com.djrapitops.extension;
+package net.playeranalytics.extension.bentobox;
 
 import com.djrapitops.plan.extension.ElementOrder;
 import com.djrapitops.plan.extension.NotReadyException;
